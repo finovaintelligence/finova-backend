@@ -1,0 +1,20 @@
+[
+  {
+    "email": "cliente_test@finova.com",
+    "password": "123456",
+    "tenant": "CLIENTE_TEST",
+    "role": "cliente"
+  },
+  {
+    "email": "cliente2@finova.com",
+    "password": "123456",
+    "tenant": "CLIENTE2",
+    "role": "cliente"
+  },
+  {
+    "email": "admin@finova.com",
+    "password": "admin123",
+    "tenant": "FINOVA",
+    "role": "admin"
+  }
+]

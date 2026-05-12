@@ -1,3 +1,4 @@
+const fs = require("fs");
 require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
@@ -29,24 +30,45 @@ const users = [
 // LOGIN
 app.post('/login', (req, res) => {
 
-    const { email, password } = req.body;
+    try {
 
-    const user = users.find(
-        u => u.email === email && u.password === password
-    );
+        const { email, password } = req.body;
 
-    if (!user) {
+        const users = JSON.parse(
+            fs.readFileSync('./users.json')
+        );
 
-        return res.status(401).json({
-            error: "Credenciales inválidas"
+        const user = users.find(
+            u =>
+                u.email === email &&
+                u.password === password
+        );
+
+        if (!user) {
+
+            return res.status(401).json({
+                error: 'Credenciales inválidas'
+            });
+
+        }
+
+        res.json({
+            success: true,
+            email: user.email,
+            tenant: user.tenant,
+            role: user.role
         });
 
     }
+    catch (error) {
 
-    res.json({
-        email: user.email,
-        role: user.role
-    });
+        console.error(error);
+
+        res.status(500).json({
+            error: 'Error login'
+        });
+
+    }
 
 });
 
