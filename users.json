@@ -6,6 +6,12 @@
     "role": "cliente"
   },
   {
+    "email": "cliente_demo@finova.com",
+    "password": "123456",
+    "tenant": "CLIENTE_DEMO",
+    "role": "cliente"
+  },
+  {
     "email": "cliente2@finova.com",
     "password": "123456",
     "tenant": "CLIENTE2",
