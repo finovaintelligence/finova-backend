@@ -22,5 +22,11 @@
     "password": "admin123",
     "tenant": "FINOVA",
     "role": "admin"
+  },
+  {
+  "email": "contadora@tiendasbranchos.com",
+  "password": "123456",
+  "tenant": "TIENDAS_BRANCHOS",
+  "role": "cliente"
   }
 ]
