@@ -100,7 +100,7 @@ app.post('/get-embed-token', async (req, res) => {
         const accessToken = tokenResponse.data.access_token;
 
         // 3. Generar Embed Token
-        const embedResponse = await axios.post(
+               const embedResponse = await axios.post(
             `https://api.powerbi.com/v1.0/myorg/groups/${process.env.WORKSPACE_ID}/reports/${process.env.REPORT_ID}/GenerateToken`,
             {
                 accessLevel: "View",
@@ -120,6 +120,17 @@ app.post('/get-embed-token', async (req, res) => {
             }
         );
 
+       // Mostrar información que realmente está enviando el backend
+console.log("=====================================");
+console.log("USUARIO:", req.body.email);
+console.log("WORKSPACE_ID:", process.env.WORKSPACE_ID);
+console.log("REPORT_ID:", process.env.REPORT_ID);
+console.log("DATASET_ID:", process.env.DATASET_ID);
+console.log(
+    "EMBED URL:",
+    `https://app.powerbi.com/reportEmbed?reportId=${process.env.REPORT_ID}&groupId=${process.env.WORKSPACE_ID}`
+);
+console.log("=====================================");
         res.json({
             embedToken: embedResponse.data.token,
             embedUrl: `https://app.powerbi.com/reportEmbed?reportId=${process.env.REPORT_ID}&groupId=${process.env.WORKSPACE_ID}`,
